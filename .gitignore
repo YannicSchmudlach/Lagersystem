@@ -1,0 +1,11 @@
+# Ignore environment variables
+.env
+
+# Ignore application properties file
+application-local.properties
+
+# Ignore all log files
+*.log
+
+# Ignore node_modules directory
+node_modules/
