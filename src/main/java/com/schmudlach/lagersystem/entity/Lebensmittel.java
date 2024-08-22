@@ -1,8 +1,7 @@
 package com.schmudlach.lagersystem.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import com.schmudlach.lagersystem.entity.Kategorie;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -23,4 +22,7 @@ public class Lebensmittel {
     private String einkaufsLaden;
 
     private String einheit;
+
+    @ManyToOne
+    private Kategorie kategorie;
 }

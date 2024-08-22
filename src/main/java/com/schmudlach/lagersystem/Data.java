@@ -1,0 +1,5 @@
+package com.schmudlach.lagersystem;
+
+public enum Data {
+    GEMÜSE, OBST, AUFSTRICHSÜß, BACKEN, TEIGWAREN, NUDELREIS, KÜHLWAREWURST, KÜHLWAREKÄSE, MILCH, SNACK, HAUSHALT, TIEFKÜHL, DOSEN
+}
