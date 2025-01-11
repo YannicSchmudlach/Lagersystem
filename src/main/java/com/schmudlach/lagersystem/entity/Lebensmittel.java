@@ -25,4 +25,5 @@ public class Lebensmittel {
 
     @ManyToOne
     private Kategorie kategorie;
+
 }

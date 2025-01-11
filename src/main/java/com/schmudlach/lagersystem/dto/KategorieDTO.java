@@ -1,5 +1,6 @@
 package com.schmudlach.lagersystem.dto;
 
+import com.schmudlach.lagersystem.Data;
 import com.schmudlach.lagersystem.entity.Kategorie;
 
 public record KategorieDTO(
