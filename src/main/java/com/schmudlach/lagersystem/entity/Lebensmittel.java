@@ -23,6 +23,8 @@ public class Lebensmittel {
 
     private String einheit;
 
+    private int threshold;
+
     @ManyToOne
     private Kategorie kategorie;
 
