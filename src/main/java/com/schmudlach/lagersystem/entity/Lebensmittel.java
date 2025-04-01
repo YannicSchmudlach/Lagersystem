@@ -25,4 +25,6 @@ public class Lebensmittel {
 
     @ManyToOne
     private Kategorie kategorie;
+
+    private int threshold;
 }

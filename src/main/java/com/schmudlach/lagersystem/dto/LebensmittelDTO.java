@@ -9,9 +9,10 @@ public record LebensmittelDTO(
         String name,
         String einkaufsLaden,
         String einheit,
-        Kategorie kategorie
+        Kategorie kategorie,
+        int threshold
 ) {
     public Lebensmittel toLebensmittel(){
-        return Lebensmittel.builder().name(name).einheit(einheit).einkaufsLaden(einkaufsLaden).preis(preis).kategorie(kategorie).build();
+        return Lebensmittel.builder().name(name).einheit(einheit).einkaufsLaden(einkaufsLaden).preis(preis).kategorie(kategorie).threshold(threshold).build();
     }
 }
