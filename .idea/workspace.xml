@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7b5bd01e-4759-47be-b0bb-09e501c93823" name="Changes" comment="add files">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/service/LebensmittelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/service/LebensmittelService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/service/KategorieService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/service/KategorieService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,9 +18,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
+        <option value="Interface" />
         <option value="Record" />
         <option value="Class" />
-        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -72,7 +73,7 @@
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.keymap",
+    "settings.editor.selected.configurable": "ml.llm.mcp",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -186,6 +187,32 @@
     <MESSAGE value="Kategorie hinzugefügt" />
     <MESSAGE value="add files" />
     <option name="LAST_COMMIT_MESSAGE" value="add files" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/service/KategorieService.java</url>
+          <line>19</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/service/LebensmittelService.java</url>
+          <line>31</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/controller/LebensmittelController.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="com.schmudlach.lagersystem.entity.Lebensmittel" memberName="kategorie" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
