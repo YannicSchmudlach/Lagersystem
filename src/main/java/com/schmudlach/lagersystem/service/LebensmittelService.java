@@ -29,7 +29,7 @@ public class LebensmittelService {
     }
 
     public Lebensmittel create(final Lebensmittel lebensmittel) {
-        Kategorie kategorie = kategorieRepository.findByName(lebensmittel.getKategorie().getName())
+        Kategorie kategorie = kategorieRepository.findByName(lebensmittel.getKategorie().getName()) //TODO NICHRT MEHR über getName weil es soll mehrere gleiche geben oder besser lassen und einkaufsladen mit preis splitten von lebensmittel!
                 .orElseGet(() -> {
                     Kategorie neueKategorie = Kategorie.builder()
                             .name(lebensmittel.getKategorie().getName())
