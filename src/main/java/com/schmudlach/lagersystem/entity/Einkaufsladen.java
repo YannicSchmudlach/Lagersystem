@@ -1,7 +1,8 @@
 package com.schmudlach.lagersystem.entity;
 
-import com.schmudlach.lagersystem.entity.Kategorie;
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import lombok.*;
 
 @Entity
@@ -10,14 +11,12 @@ import lombok.*;
 @Getter
 @Setter
 @Builder
-public class Lebensmittel {
+public class Einkaufsladen {
+
     @Id
     @GeneratedValue
-    private int lebensmittelID;
+    private int einkaufsladenId;
 
     private String name;
-
-    @ManyToOne
-    private Kategorie kategorie;
 
 }

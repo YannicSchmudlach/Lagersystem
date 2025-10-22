@@ -3,10 +3,8 @@ package com.schmudlach.lagersystem.entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import lombok.*;
-
-import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -14,14 +12,17 @@ import java.util.List;
 @Getter
 @Setter
 @Builder
-public class Lager {
+public class VerfügbareLebensmittel {
 
     @Id
     @GeneratedValue
-    private int lagerID;
+    private int verfuegbareLebensmittelId;
 
-    @ManyToOne
+    @OneToOne
     private Lebensmittel lebensmittel;
 
-    private double verfügbareMenge;
+    private int anzahl;
+
+    private int threshold;
+
 }
