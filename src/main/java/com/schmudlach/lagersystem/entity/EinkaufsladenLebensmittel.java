@@ -1,9 +1,6 @@
 package com.schmudlach.lagersystem.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -12,6 +9,15 @@ import lombok.*;
 @Getter
 @Setter
 @Builder
+@Table(
+        name = "einkaufsladen_lebensmittel",
+        uniqueConstraints = {
+                @UniqueConstraint(
+                        name = "uk_einkaufsladen_lebensmittel_laden_leb",
+                        columnNames = {"einkaufsladen_id", "lebensmittel_id"}
+                )
+        }
+)
 public class EinkaufsladenLebensmittel {
 
 
@@ -19,10 +25,21 @@ public class EinkaufsladenLebensmittel {
     @GeneratedValue
     private int einkaufsladenLebensmittelId;
 
-    @OneToOne
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(
+            name = "lebensmittel_id",                 // FK-Spalte in DIESER Tabelle
+            referencedColumnName = "lebensmittelID", // PK-Spalte in Lebensmittel
+            nullable = false
+    )
     private Lebensmittel lebensmittel;
 
-    @OneToOne
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(
+            name = "einkaufsladen_id",                 // FK-Spalte in DIESER Tabelle
+            referencedColumnName = "einkaufsladenId", // PK-Spalte in Einkaufsladen
+            nullable = false
+    )
     private Einkaufsladen einkaufsladen;
 
     private double preis;

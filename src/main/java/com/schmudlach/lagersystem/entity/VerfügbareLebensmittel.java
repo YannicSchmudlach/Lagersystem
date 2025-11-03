@@ -1,9 +1,6 @@
 package com.schmudlach.lagersystem.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -12,17 +9,29 @@ import lombok.*;
 @Getter
 @Setter
 @Builder
+@Table(name = "verfügbarelebensmittel",
+        uniqueConstraints = {
+                @UniqueConstraint(
+                        name = "uk_verfügbarelebensmittel_lebensmittel",
+                        columnNames = {"lebensmittel_id"}
+                )})
 public class VerfügbareLebensmittel {
 
     @Id
     @GeneratedValue
     private int verfuegbareLebensmittelId;
 
-    @OneToOne
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "lebensmittel_id",
+            nullable = false,
+            referencedColumnName = "lebensmittelID",
+            foreignKey = @ForeignKey(name = "fk_food_lebensmittel"))
     private Lebensmittel lebensmittel;
 
+    @Column(nullable = false)
     private int anzahl;
 
+    @Column(nullable = false)
     private int threshold;
 
 }

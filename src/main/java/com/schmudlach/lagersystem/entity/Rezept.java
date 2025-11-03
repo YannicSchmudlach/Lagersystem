@@ -1,9 +1,7 @@
 package com.schmudlach.lagersystem.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 import java.util.List;
@@ -14,14 +12,17 @@ import java.util.List;
 @Getter
 @Setter
 @Builder
+@Table(name = "rezept")
 public class Rezept {
     @Id
     @GeneratedValue
     private int rezeptId;
 
-    @OneToMany
-    private List<Lebensmittel> lebensmittelList;
+    @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "rezept", cascade = CascadeType.ALL)
+    private List<RezeptLebensmittel> rezeptLebensmittel;
 
+    @NotBlank
+    @Column(nullable = false)
     private String beschreibung;
 
     private String bild;

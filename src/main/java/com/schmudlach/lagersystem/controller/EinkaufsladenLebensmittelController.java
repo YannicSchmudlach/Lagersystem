@@ -24,6 +24,6 @@ public class EinkaufsladenLebensmittelController {
 
     @PostMapping()
     EinkaufsladenLebensmittel create(@RequestBody EinkaufsladenLebensmittelDTO einkaufsladenLebensmittelDTO) throws Exception {
-        return service.create(einkaufsladenLebensmittelDTO.toEinkaufsladenLebensmittel());
+        return service.create(einkaufsladenLebensmittelDTO.einkaufsladenId(), einkaufsladenLebensmittelDTO.lebensmittelId(), einkaufsladenLebensmittelDTO.preis());
     }
 }

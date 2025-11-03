@@ -4,24 +4,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7b5bd01e-4759-47be-b0bb-09e501c93823" name="Changes" comment="Lager hinzugefügt">
+    <list default="true" id="7b5bd01e-4759-47be-b0bb-09e501c93823" name="Changes" comment="added neue endpunkte">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/controller/LagerController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/dto/LagerDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/controller/EinkaufsladenLebensmittelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/controller/EinkaufsladenLebensmittelController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/dto/EinkaufsladenLebensmittelDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/dto/EinkaufsladenLebensmittelDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/dto/LebensmittelDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/dto/LebensmittelDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/entity/Lager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/dto/RezeptDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/dto/RezeptDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/entity/Einkaufsladen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/entity/Einkaufsladen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/entity/EinkaufsladenLebensmittel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/entity/EinkaufsladenLebensmittel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/entity/Kategorie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/entity/Kategorie.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/entity/Lebensmittel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/entity/Lebensmittel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/repository/LagerRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/service/LagerService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/controller/LagerController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/dto/LagerDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/entity/Rezept.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/entity/Rezept.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/entity/VerfügbareLebensmittel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/entity/VerfügbareLebensmittel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/repository/EinkaufsladenLebensmittelRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/repository/EinkaufsladenLebensmittelRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/service/EinkaufsladenLebensmittelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/service/EinkaufsladenLebensmittelService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/service/EinkaufsladenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/service/EinkaufsladenService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/service/KategorieService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/service/KategorieService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/service/LebensmittelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/service/LebensmittelService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/service/RezeptService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/service/RezeptService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/controller/EinkaufsladenLebensmittelController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/controller/EinkaufsladenLebensmittelController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/dto/EinkaufsladenLebensmittelDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/dto/EinkaufsladenLebensmittelDTO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/dto/LebensmittelDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/dto/LebensmittelDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/entity/Lager$LagerBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/entity/Lager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/entity/Einkaufsladen$EinkaufsladenBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/entity/Einkaufsladen$EinkaufsladenBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/entity/Einkaufsladen.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/entity/Einkaufsladen.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/entity/EinkaufsladenLebensmittel$EinkaufsladenLebensmittelBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/entity/EinkaufsladenLebensmittel$EinkaufsladenLebensmittelBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/entity/EinkaufsladenLebensmittel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/entity/EinkaufsladenLebensmittel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/entity/Lebensmittel$LebensmittelBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/entity/Lebensmittel$LebensmittelBuilder.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/entity/Lebensmittel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/entity/Lebensmittel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/repository/LagerRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/service/LagerService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/repository/EinkaufsladenLebensmittelRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/repository/EinkaufsladenLebensmittelRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/repository/EinkaufsladenRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/repository/EinkaufsladenRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/service/EinkaufsladenLebensmittelService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/service/EinkaufsladenLebensmittelService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,8 +45,8 @@
       <list>
         <option value="Enum" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="Record" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -168,7 +180,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741027642208</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="added neue endpunkte">
+      <option name="closed" value="true" />
+      <created>1761157243580</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1761157243580</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -200,20 +220,61 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Kategorie hinzugefügt" />
     <MESSAGE value="add files" />
-    <option name="LAST_COMMIT_MESSAGE" value="add files" />
+    <MESSAGE value="added neue endpunkte" />
+    <option name="LAST_COMMIT_MESSAGE" value="added neue endpunkte" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/service/KategorieService.java</url>
-          <line>19</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/controller/LebensmittelController.java</url>
           <line>37</line>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/service/LebensmittelService.java</url>
+          <line>31</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/service/LebensmittelService.java</url>
+          <line>32</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/service/LebensmittelService.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/service/LebensmittelService.java</url>
+          <line>34</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/service/LebensmittelService.java</url>
+          <line>35</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/service/LebensmittelService.java</url>
+          <line>36</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/service/LebensmittelService.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/service/LebensmittelService.java</url>
+          <line>39</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/service/LebensmittelService.java</url>
+          <line>40</line>
+          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

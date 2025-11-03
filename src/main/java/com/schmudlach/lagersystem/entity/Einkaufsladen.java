@@ -1,8 +1,9 @@
 package com.schmudlach.lagersystem.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 @Entity
@@ -11,12 +12,20 @@ import lombok.*;
 @Getter
 @Setter
 @Builder
+@Table(name = "einkaufsladen",
+        uniqueConstraints = {
+                @UniqueConstraint(
+                        name = "uk_einkaufsladen_name",
+                        columnNames = {"name"}
+                )})
 public class Einkaufsladen {
 
     @Id
     @GeneratedValue
     private int einkaufsladenId;
 
+    @NotBlank
+    @Column(nullable = false)
     private String name;
 
 }

@@ -13,8 +13,9 @@ public record RezeptDTO(
         int personen) {
 
     public Rezept toRezept() {
-        return Rezept.builder().lebensmittelList(lebensmittelList.stream()
-                        .map(LebensmittelDTO::toLebensmittel).toList())
+        //TODO .lebensmittelList(lebensmittelList.stream()
+        //                        .map(LebensmittelDTO::toLebensmittel).toList())
+        return Rezept.builder()
                 .beschreibung(beschreibung)
                 .bild(bild)
                 .leckerheitsskala(leckerheitsskala)

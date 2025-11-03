@@ -29,16 +29,7 @@ public class RezeptService {
     }
 
     public Rezept insertRezept(final Rezept rezept){
-
-        List<Lebensmittel> neueLebensmittel = new ArrayList<>();
-
-        for (Lebensmittel lebensmittel : rezept.getLebensmittelList()) {
-            Lebensmittel gespeichertesLebensmittel = lebensmittelRepository.findByName(lebensmittel.getName())
-                    .orElseGet(() -> lebensmittelService.create(lebensmittel));
-            neueLebensmittel.add(gespeichertesLebensmittel);
-        }
-
-        rezept.setLebensmittelList(neueLebensmittel);
+        //TODO
         return repository.save(rezept);
     }
 }
