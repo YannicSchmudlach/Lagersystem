@@ -6,10 +6,7 @@ import com.schmudlach.lagersystem.entity.Lebensmittel;
 public record LebensmittelDTO(
         String name,
         String einheit,
-        Kategorie kategorie,
+        int kategorieId,
         int threshold
 ) {
-    public Lebensmittel toLebensmittel(){
-        return Lebensmittel.builder().name(name).kategorie(kategorie).build();
-    }
 }

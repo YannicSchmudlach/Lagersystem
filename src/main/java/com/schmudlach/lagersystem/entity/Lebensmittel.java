@@ -10,7 +10,7 @@ import lombok.*;
 @Getter
 @Setter
 @Builder
-@Table(name = "lebensmittel")
+@Table(name = "lebensmittel",uniqueConstraints = @UniqueConstraint(name ="uk_lebensmittel_name",columnNames = {"name"}))
 public class Lebensmittel {
     @Id
     @GeneratedValue

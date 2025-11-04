@@ -1,7 +1,10 @@
 package com.schmudlach.lagersystem.service;
 
+import com.schmudlach.lagersystem.dto.LebensmittelDTO;
 import com.schmudlach.lagersystem.entity.Kategorie;
 import com.schmudlach.lagersystem.entity.Lebensmittel;
+import com.schmudlach.lagersystem.error.ConflictException;
+import com.schmudlach.lagersystem.error.NotFoundException;
 import com.schmudlach.lagersystem.repository.KategorieRepository;
 import com.schmudlach.lagersystem.repository.LebensmittelRepository;
 import lombok.RequiredArgsConstructor;
@@ -10,34 +13,36 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Locale;
 
 @Service
 @RequiredArgsConstructor
 @Slf4j
-@Transactional
+@Transactional(readOnly = true)
 public class LebensmittelService {
 
     private final LebensmittelRepository repository;
     private final KategorieRepository kategorieRepository;
 
     public Lebensmittel getLebensmittel(final int id) {
-        return repository.findById(id).get();
+        return repository.findById(id).orElseThrow(() -> new NotFoundException("Lebensmittel", String.valueOf(id)));
     }
 
     public List<Lebensmittel> getAllLebensmittel() {
         return repository.findAll();
     }
 
-    public Lebensmittel create(final Lebensmittel lebensmittel) {
-        Kategorie kategorie = kategorieRepository.findByName(lebensmittel.getKategorie().getName())
-                .orElseGet(() -> {
-                    Kategorie neueKategorie = Kategorie.builder()
-                            .name(lebensmittel.getKategorie().getName())
-                            .build();
-                    return kategorieRepository.save(neueKategorie);
-                });
+    @Transactional
+    public Lebensmittel create(final LebensmittelDTO lebensmitteldto) {
+        Kategorie kategorie = kategorieRepository.findById(lebensmitteldto.kategorieId()).orElseThrow(() ->
+                new NotFoundException("Kategorie", String.valueOf(lebensmitteldto.kategorieId())));
 
-        lebensmittel.setKategorie(kategorie);
+        final String lebensmittelName = lebensmitteldto.name().toUpperCase(Locale.ROOT).trim();
+        repository.findByName(lebensmittelName).ifPresent(tmp -> {
+            throw new ConflictException(tmp.getName());
+        });
+
+        final Lebensmittel lebensmittel = Lebensmittel.builder().name(lebensmittelName).kategorie(kategorie).build();
         return repository.save(lebensmittel);
     }
 }

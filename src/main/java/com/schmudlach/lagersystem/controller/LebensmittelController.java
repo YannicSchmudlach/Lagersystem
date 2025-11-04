@@ -35,8 +35,8 @@ public class LebensmittelController {
 
     @PostMapping
     ResponseEntity<Void> createLebensmittel(@RequestBody final LebensmittelDTO lebensmittelDTO, final HttpServletRequest request) throws URISyntaxException {
-        final var  l = service.create(lebensmittelDTO.toLebensmittel());
-        final var location = new URI(ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString() + '/' + l.getLebensmittelID()); //NOSONAR
+        final var  l = service.create(lebensmittelDTO);
+        final var location = new URI(ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString() + '/' + l.getLebensmittelID());
         return created(location).build();
     }
 
