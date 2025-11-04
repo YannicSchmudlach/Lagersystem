@@ -9,3 +9,5 @@ application-local.properties
 
 # Ignore node_modules directory
 node_modules/
+
+/target
