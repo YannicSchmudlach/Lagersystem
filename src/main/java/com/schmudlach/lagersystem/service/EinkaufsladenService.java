@@ -2,6 +2,7 @@ package com.schmudlach.lagersystem.service;
 
 import com.schmudlach.lagersystem.entity.Einkaufsladen;
 import com.schmudlach.lagersystem.error.ConflictException;
+import com.schmudlach.lagersystem.error.NotFoundException;
 import com.schmudlach.lagersystem.repository.EinkaufsladenRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,10 @@ public class EinkaufsladenService {
 
     public List<Einkaufsladen> getAllEinkaufsladen() {
         return repository.findAll();
+    }
+
+    public Einkaufsladen getEinkaufsladen(int id){
+        return repository.findById(id).orElseThrow(()-> new NotFoundException("einkaufsladen",String.valueOf(id)));
     }
 
     @Transactional

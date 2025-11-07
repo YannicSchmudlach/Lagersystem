@@ -1,6 +1,7 @@
 package com.schmudlach.lagersystem.service;
 
 import com.schmudlach.lagersystem.dto.VerfügbareLebensmittelDTO;
+import com.schmudlach.lagersystem.entity.Kategorie;
 import com.schmudlach.lagersystem.entity.Lebensmittel;
 import com.schmudlach.lagersystem.entity.VerfügbareLebensmittel;
 import com.schmudlach.lagersystem.error.BadRequestException;
@@ -24,6 +25,10 @@ public class VerfügbareLebensmittelService {
 
     public List<VerfügbareLebensmittel> getAllVerfügbareLebensmittel() {
         return repo.findAll();
+    }
+
+    public VerfügbareLebensmittel getVerfügbareLebensmittelById(int id){
+        return repo.findById(id).orElseThrow(()-> new NotFoundException("kategorie",String.valueOf(id)));
     }
 
     @Transactional

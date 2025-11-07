@@ -27,10 +27,16 @@ public class KategorieController {
     List<Kategorie> getAll(){
         return service.getAllKategories();
     }
+
+    @GetMapping(path = "{id}")
+    Kategorie getKategorie(@PathVariable final int id){
+        return service.getKategorieById(id);
+    }
+
     @PostMapping()
     ResponseEntity<Void> createKategorie(@RequestBody final KategorieDTO kategorieDTO, final HttpServletRequest request) throws URISyntaxException {
         final var  l = service.insertKategorie(kategorieDTO.toKategorie());
-        final var location = new URI(ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString() + '/' + l.getKategorieId()); //NOSONAR
+        final var location = new URI(ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString() + "/kategorie/" + l.getKategorieId());
         return created(location).build();
     }
 }

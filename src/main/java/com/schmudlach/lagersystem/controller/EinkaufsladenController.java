@@ -30,10 +30,15 @@ public class EinkaufsladenController {
         return service.getAllEinkaufsladen();
     }
 
+    @GetMapping(path = "{id}")
+    Einkaufsladen getEinkaufsladen(@PathVariable final int id){
+        return service.getEinkaufsladen(id);
+    }
+
     @PostMapping
     ResponseEntity<Void> insertEinkaufsladen(@RequestBody EinkaufsladenDTO einkaufsladenDTO) throws URISyntaxException {
         final var l = service.insertEinkaufsladen(einkaufsladenDTO.toEinkaufsladen());
-        final var location = new URI(ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString() + '/' + l.getEinkaufsladenId());
+        final var location = new URI(ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString() + "/einkaufsladen/" + l.getEinkaufsladenId());
         return created(location).build();
     }
 }

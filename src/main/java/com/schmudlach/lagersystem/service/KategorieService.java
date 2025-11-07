@@ -2,6 +2,7 @@ package com.schmudlach.lagersystem.service;
 
 import com.schmudlach.lagersystem.entity.Kategorie;
 import com.schmudlach.lagersystem.error.ConflictException;
+import com.schmudlach.lagersystem.error.NotFoundException;
 import com.schmudlach.lagersystem.repository.KategorieRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,10 @@ public class KategorieService {
 
     public List<Kategorie> getAllKategories() {
         return repository.findAll();
+    }
+
+    public Kategorie getKategorieById(int id){
+        return repository.findById(id).orElseThrow(()-> new NotFoundException("kategorie",String.valueOf(id)));
     }
 
     @Transactional

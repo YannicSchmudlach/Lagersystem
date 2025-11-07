@@ -31,6 +31,10 @@ public class EinkaufsladenLebensmittelService {
         return repository.findAll();
     }
 
+    public EinkaufsladenLebensmittel getEinkaufsladenLebensmittelById(int id){
+        return repository.findById(id).orElseThrow(()-> new NotFoundException("einkaufsladenLebensmitttel",String.valueOf(id)));
+    }
+
     @Transactional
     public EinkaufsladenLebensmittel create(final int einkaufsladenId, final int lebensmittelId, final double preis) {
         Lebensmittel lebensmittel = lebensmittelRepository.findById(lebensmittelId).orElseThrow(() -> new NotFoundException("Lebensmittel", String.valueOf(lebensmittelId)));

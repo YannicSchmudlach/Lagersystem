@@ -27,10 +27,15 @@ public class EinkaufsladenLebensmittelController {
         return service.getAll();
     }
 
+    @GetMapping(path = "{id}")
+    EinkaufsladenLebensmittel getEinkaufsladenLebensmittel(@PathVariable final int id){
+        return service.getEinkaufsladenLebensmittelById(id);
+    }
+
     @PostMapping()
     ResponseEntity<Void> create(@RequestBody EinkaufsladenLebensmittelDTO einkaufsladenLebensmittelDTO) throws Exception {
         final var l = service.create(einkaufsladenLebensmittelDTO.einkaufsladenId(), einkaufsladenLebensmittelDTO.lebensmittelId(), einkaufsladenLebensmittelDTO.preis());
-        final var location = new URI(ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString() + '/' + l.getEinkaufsladenLebensmittelId());
+        final var location = new URI(ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString() + "/einkaufsladenlebensmittel/" + l.getEinkaufsladenLebensmittelId());
         return created(location).build();
     }
 }
