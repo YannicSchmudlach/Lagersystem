@@ -3,7 +3,6 @@ package com.schmudlach.lagersystem.service;
 import com.schmudlach.lagersystem.entity.Kategorie;
 import com.schmudlach.lagersystem.error.ConflictException;
 import com.schmudlach.lagersystem.repository.KategorieRepository;
-import jakarta.validation.constraints.Null;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

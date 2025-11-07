@@ -1,7 +1,6 @@
 package com.schmudlach.lagersystem.controller;
 
 import com.schmudlach.lagersystem.dto.KategorieDTO;
-import com.schmudlach.lagersystem.dto.LebensmittelDTO;
 import com.schmudlach.lagersystem.entity.Kategorie;
 import com.schmudlach.lagersystem.service.KategorieService;
 import jakarta.servlet.http.HttpServletRequest;

@@ -6,7 +6,6 @@ import com.schmudlach.lagersystem.entity.Lebensmittel;
 import com.schmudlach.lagersystem.entity.Rezept;
 import com.schmudlach.lagersystem.entity.RezeptLebensmittel;
 import com.schmudlach.lagersystem.error.BadRequestException;
-import com.schmudlach.lagersystem.error.ConflictException;
 import com.schmudlach.lagersystem.error.NotFoundException;
 import com.schmudlach.lagersystem.repository.LebensmittelRepository;
 import com.schmudlach.lagersystem.repository.RezeptRepository;

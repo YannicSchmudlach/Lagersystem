@@ -1,6 +1,5 @@
 package com.schmudlach.lagersystem.controller;
 
-import com.schmudlach.lagersystem.dto.LebensmittelDTO;
 import com.schmudlach.lagersystem.dto.RezeptDTO;
 import com.schmudlach.lagersystem.entity.Rezept;
 import com.schmudlach.lagersystem.service.RezeptService;
