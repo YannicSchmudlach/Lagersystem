@@ -16,4 +16,8 @@ public class NotFoundException extends RuntimeException{
         this.identifier=identifier;
         this.resource=resource;
     }
+    public NotFoundException(String resource) {
+        super(resource + " kontne nicht gefunden werden '");
+        this.resource=resource;
+    }
 }

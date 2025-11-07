@@ -35,7 +35,7 @@ public class RezeptController {
 
     @PostMapping
     ResponseEntity<Void> createRezept(@RequestBody final RezeptDTO rezeptDTO, final HttpServletRequest request) throws URISyntaxException {
-        final var l = service.insertRezept(rezeptDTO.toRezept());
+        final var l = service.insertRezept(rezeptDTO);
         final var location = new URI(ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString() + '/' + l.getRezeptId());
         return created(location).build();
     }
