@@ -11,3 +11,7 @@ application-local.properties
 node_modules/
 
 /target
+.idea
+.idea/
+*.iml
+out/
