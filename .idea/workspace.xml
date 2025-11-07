@@ -4,24 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7b5bd01e-4759-47be-b0bb-09e501c93823" name="Changes" comment="swapped to postgres">
+    <list default="true" id="7b5bd01e-4759-47be-b0bb-09e501c93823" name="Changes" comment="rezept service erweitert">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/controller/RezeptController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/controller/RezeptController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/dto/RezeptDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/dto/RezeptDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/error/NotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/error/NotFoundException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/service/RezeptService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/service/RezeptService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/controller/ExceptionHandlerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/controller/ExceptionHandlerController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/controller/LebensmittelController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/controller/LebensmittelController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/controller/RezeptController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/controller/RezeptController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/controller/VerfügbareLebensmittelController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/controller/VerfügbareLebensmittelController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/dto/LebensmittelDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/dto/LebensmittelDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/dto/RezeptDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/dto/RezeptDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/dto/VerfügbareLebensmittelDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/dto/VerfügbareLebensmittelDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/entity/Lebensmittel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/entity/Lebensmittel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/entity/Rezept.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/entity/Rezept.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/service/LebensmittelService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/service/LebensmittelService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/controller/VerfügbareLebensmittelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/controller/VerfügbareLebensmittelController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/dto/VerfügbareLebensmittelDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/dto/VerfügbareLebensmittelDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/service/EinkaufsladenLebensmittelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/service/EinkaufsladenLebensmittelService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/service/VerfügbareLebensmittelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/schmudlach/lagersystem/service/VerfügbareLebensmittelService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/error/NotFoundException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/error/NotFoundException.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/service/RezeptService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/schmudlach/lagersystem/service/RezeptService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -217,7 +207,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762531985749</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="rezept service erweitert">
+      <option name="closed" value="true" />
+      <created>1762550839402</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1762550839402</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -255,7 +253,8 @@
     <MESSAGE value="updated gitignore" />
     <MESSAGE value="updated errorhandler" />
     <MESSAGE value="swapped to postgres" />
-    <option name="LAST_COMMIT_MESSAGE" value="swapped to postgres" />
+    <MESSAGE value="rezept service erweitert" />
+    <option name="LAST_COMMIT_MESSAGE" value="rezept service erweitert" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

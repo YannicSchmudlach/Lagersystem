@@ -18,4 +18,6 @@ public class VerfügbareLebensmittelController {
     public List<VerfügbareLebensmittel> getAll(){
         return service.getAllVerfügbareLebensmittel();
     }
+
+
 }

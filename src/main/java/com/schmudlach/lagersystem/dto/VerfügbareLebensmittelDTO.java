@@ -1,7 +1,7 @@
 package com.schmudlach.lagersystem.dto;
 
 public record VerfügbareLebensmittelDTO(
-        LebensmittelDTO lebensmittel,
+        int lebensmittelId,
         int anzahl,
         int threshold
 ) {

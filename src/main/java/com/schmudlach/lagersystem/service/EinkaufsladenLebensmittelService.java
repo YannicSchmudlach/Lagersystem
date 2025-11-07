@@ -23,9 +23,9 @@ import java.util.List;
 @Transactional(readOnly = true)
 public class EinkaufsladenLebensmittelService {
 
-    private EinkaufsladenLebensmittelRepository repository;
-    private LebensmittelRepository lebensmittelRepository;
-    private EinkaufsladenRepository einkaufsladenRepository;
+    private final EinkaufsladenLebensmittelRepository repository;
+    private final LebensmittelRepository lebensmittelRepository;
+    private final EinkaufsladenRepository einkaufsladenRepository;
 
     public List<EinkaufsladenLebensmittel> getAll() {
         return repository.findAll();
