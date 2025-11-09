@@ -39,5 +39,9 @@ public class RezeptLebensmittel {
 
     @NotBlank
     @Column(nullable = false)
-    private String menge;
+    private double menge;
+
+    @NotBlank
+    @Column(nullable = false)
+    private String einheit;
 }

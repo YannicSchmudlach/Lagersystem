@@ -50,12 +50,14 @@ public class RezeptService {
             throw new BadRequestException("dauer", String.valueOf(rezeptDTO.dauer()));
         }
 
-        HashMap<Integer, String> ids = new HashMap<Integer, String>();
+        HashMap<Integer, Double> ids = new HashMap<Integer, Double>();
 
         for (RezeptLebensmittelDTO obj : rezeptDTO.rezeptLebensmittelList()) {
-            String m = obj.menge().trim();
-            if (m.isBlank())
-                throw new BadRequestException("mene", "0");
+            double m = obj.menge();
+            if (m<0)
+                throw new BadRequestException("menge", "0");
+            if (obj.einheit().trim().isBlank())
+                throw new BadRequestException("einheit", "null");
             ids.put(obj.lebensmittelId(), m);
         }
 
