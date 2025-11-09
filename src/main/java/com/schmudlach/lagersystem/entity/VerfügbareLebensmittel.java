@@ -26,6 +26,7 @@ public class VerfügbareLebensmittel {
             nullable = false,
             referencedColumnName = "lebensmittelID",
             foreignKey = @ForeignKey(name = "fk_food_lebensmittel"))
+
     private Lebensmittel lebensmittel;
 
     @Column(nullable = false)

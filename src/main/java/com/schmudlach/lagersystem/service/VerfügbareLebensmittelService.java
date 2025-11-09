@@ -28,7 +28,7 @@ public class VerfügbareLebensmittelService {
     }
 
     public VerfügbareLebensmittel getVerfügbareLebensmittelById(int id){
-        return repo.findById(id).orElseThrow(()-> new NotFoundException("kategorie",String.valueOf(id)));
+        return repo.findById(id).orElseThrow(()-> new NotFoundException("VerfügbareLebensmittel",String.valueOf(id)));
     }
 
     @Transactional
@@ -43,6 +43,13 @@ public class VerfügbareLebensmittelService {
         Lebensmittel l = lebensmittelRepository.findById(verfügbareLebensmittelDTO.lebensmittelId()).orElseThrow(() -> new NotFoundException("lebensmittel", String.valueOf(verfügbareLebensmittelDTO.lebensmittelId())));
         VerfügbareLebensmittel v = VerfügbareLebensmittel.builder().lebensmittel(l).anzahl(verfügbareLebensmittelDTO.anzahl()).threshold(verfügbareLebensmittelDTO.threshold()).build();
         return repo.save(v);
+    }
+
+    @Transactional
+    public VerfügbareLebensmittel deleteById(int id){
+        VerfügbareLebensmittel v = getVerfügbareLebensmittelById(id);
+        repo.deleteById(id);
+        return v;
     }
 
 

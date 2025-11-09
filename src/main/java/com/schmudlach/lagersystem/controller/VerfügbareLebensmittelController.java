@@ -29,12 +29,12 @@ public class VerfügbareLebensmittelController {
 
 
     @GetMapping
-    public List<VerfügbareLebensmittel> getAll(){
+    List<VerfügbareLebensmittel> getAll() {
         return service.getAllVerfügbareLebensmittel();
     }
 
     @GetMapping(path = "{id}")
-    VerfügbareLebensmittel getVerfügbareLebensmittel(@PathVariable final int id){
+    VerfügbareLebensmittel getVerfügbareLebensmittel(@PathVariable final int id) {
         return service.getVerfügbareLebensmittelById(id);
     }
 
@@ -43,6 +43,12 @@ public class VerfügbareLebensmittelController {
         final var l = service.create(verfügbareLebensmittelDTO);
         final var location = new URI(ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString() + "/verfügbarelebensmittel/" + l.getVerfuegbareLebensmittelId());
         return created(location).build();
+    }
+
+    @DeleteMapping(path = "/{id}")
+    ResponseEntity<Void> deleteVerfügbareLebensmittel(@PathVariable final int id) {
+        service.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 
 }
