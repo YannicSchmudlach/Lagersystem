@@ -30,7 +30,7 @@ public class VerfügbareLebensmittel {
     private Lebensmittel lebensmittel;
 
     @Column(nullable = false)
-    private int anzahl;
+    private double anzahl;
 
     @Column(nullable = false)
     private int threshold;

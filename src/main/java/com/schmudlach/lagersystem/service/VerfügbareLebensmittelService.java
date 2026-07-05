@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -27,8 +28,16 @@ public class VerfügbareLebensmittelService {
         return repo.findAll();
     }
 
-    public VerfügbareLebensmittel getVerfügbareLebensmittelById(int id){
-        return repo.findById(id).orElseThrow(()-> new NotFoundException("VerfügbareLebensmittel",String.valueOf(id)));
+    public VerfügbareLebensmittel getVerfügbareLebensmittelByLebensmittel(Lebensmittel lebensmittel) {
+        return repo.findByLebensmittel(lebensmittel).orElseThrow(() -> new NotFoundException("VerfügbareLebensmittel", String.valueOf(lebensmittel.getLebensmittelID())));
+    }
+
+    public Optional<VerfügbareLebensmittel> findByLebensmittel(final Lebensmittel lebensmittel) {
+        return repo.findByLebensmittel(lebensmittel);
+    }
+
+    public VerfügbareLebensmittel getVerfügbareLebensmittelById(int id) {
+        return repo.findById(id).orElseThrow(() -> new NotFoundException("VerfügbareLebensmittel", String.valueOf(id)));
     }
 
     @Transactional
@@ -46,7 +55,7 @@ public class VerfügbareLebensmittelService {
     }
 
     @Transactional
-    public VerfügbareLebensmittel deleteById(int id){
+    public VerfügbareLebensmittel deleteById(int id) {
         VerfügbareLebensmittel v = getVerfügbareLebensmittelById(id);
         repo.deleteById(id);
         return v;

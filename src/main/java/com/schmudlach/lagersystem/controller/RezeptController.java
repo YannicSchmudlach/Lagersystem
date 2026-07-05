@@ -38,4 +38,5 @@ public class RezeptController {
         final var location = new URI(ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString() + "/rezept/" + l.getRezeptId());
         return created(location).build();
     }
+
 }
