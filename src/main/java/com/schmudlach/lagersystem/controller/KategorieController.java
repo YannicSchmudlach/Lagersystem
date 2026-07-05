@@ -25,18 +25,35 @@ public class KategorieController {
 
     @GetMapping()
     List<Kategorie> getAll(){
-        return service.getAllKategories();
+        log.info("Alle Kategorien wurden angefragt");
+        List<Kategorie> result =  service.getAllKategories();
+        log.info("Kategorien erfolgreich ermittelt, anzahl={}", result.size());
+        return result;
     }
 
-    @GetMapping(path = "{id}")
+    @GetMapping(path = "/{id}")
     Kategorie getKategorie(@PathVariable final int id){
-        return service.getKategorieById(id);
+        log.info("Kategorie wurde angefragt, id={}", id);
+        Kategorie kategorie = service.getKategorieById(id);
+        log.info("Kategorie erfolgreich ermittelt, id={}, name={}",
+                kategorie.getKategorieId(),
+                kategorie.getName()
+        );
+
+        return kategorie;
     }
 
     @PostMapping()
     ResponseEntity<Void> createKategorie(@RequestBody final KategorieDTO kategorieDTO, final HttpServletRequest request) throws URISyntaxException {
+        log.info("Neue Kategorie soll erstellt werden, name={}", kategorieDTO.name());
         final var  l = service.insertKategorie(kategorieDTO.toKategorie());
         final var location = new URI(ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString() + "/kategorie/" + l.getKategorieId());
+        log.info("Kategorie erfolgreich erstellt, id={}, name={}, location={}",
+                l.getKategorieId(),
+                l.getName(),
+                location
+        );
+
         return created(location).build();
     }
 }

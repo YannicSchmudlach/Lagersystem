@@ -24,18 +24,32 @@ public class RezeptController {
 
     @GetMapping
     List<Rezept> getAllRezepte(){
-        return service.getAllRezepte();
+        log.info("Alle Rezepte wurden angefragt");
+        List<Rezept> rezepte = service.getAllRezepte();
+        log.info("Rezepte erfolgreich ermittelt, anzahl={}", rezepte.size());
+
+        return rezepte;
     }
 
-    @GetMapping(path = "{id}")
+    @GetMapping(path = "/{id}")
     Rezept getRezept(@PathVariable final int id){
-        return service.getRezept(id);
+        log.info("Rezept wurde angefragt, id={}", id);
+
+        Rezept rezept = service.getRezept(id);
+        log.info("Rezept erfolgreich ermittelt, id={}", rezept.getRezeptId());
+
+        return rezept;
     }
 
     @PostMapping
     ResponseEntity<Void> createRezept(@RequestBody final RezeptDTO rezeptDTO, final HttpServletRequest request) throws URISyntaxException {
+        log.info("Neues Rezept soll erstellt werden");
         final var l = service.insertRezept(rezeptDTO);
         final var location = new URI(ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString() + "/rezept/" + l.getRezeptId());
+        log.info("Rezept erfolgreich erstellt, id={}, location={}",
+                l.getRezeptId(),
+                location
+        );
         return created(location).build();
     }
 

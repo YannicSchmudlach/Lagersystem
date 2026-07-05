@@ -23,20 +23,36 @@ import static org.springframework.http.ResponseEntity.created;
 public class LebensmittelController {
 
     private final LebensmittelService service;
-    @GetMapping(path = "{id}")
+    @GetMapping(path = "/{id}")
     Lebensmittel getLebensmittel(@PathVariable final int id){
-        return service.getLebensmittel(id);
+        log.info("Lebensmittel wurde angefragt, id={}", id);
+        Lebensmittel lebensmittel =  service.getLebensmittel(id);
+        log.info("Lebensmittel erfolgreich ermittelt, id={}, name={}",
+                lebensmittel.getLebensmittelID(),
+                lebensmittel.getName()
+        );
+        return lebensmittel;
     }
 
     @GetMapping
     List<Lebensmittel> getAllLebensmittel(){
-        return service.getAllLebensmittel();
+        log.info("Alle Lebensmittel wurden angefragt");
+        List<Lebensmittel>lebensmittel = service.getAllLebensmittel();
+        log.info("Lebensmittel erfolgreich ermittelt, anzahl={}", lebensmittel.size());
+
+        return lebensmittel;
     }
 
     @PostMapping
     ResponseEntity<Void> createLebensmittel(@RequestBody final LebensmittelDTO lebensmittelDTO, final HttpServletRequest request) throws URISyntaxException {
+        log.info("Neues Lebensmittel soll erstellt werden, name={}", lebensmittelDTO.name());
         final var  l = service.create(lebensmittelDTO);
         final var location = new URI(ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString() + "lebensmittel/" + l.getLebensmittelID());
+        log.info("Lebensmittel erfolgreich erstellt, id={}, name={}, location={}",
+                l.getLebensmittelID(),
+                l.getName(),
+                location
+        );
         return created(location).build();
     }
 

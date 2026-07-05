@@ -27,18 +27,35 @@ public class EinkaufsladenController {
 
     @GetMapping
     List<Einkaufsladen> getAllEinkaufsladen(){
-        return service.getAllEinkaufsladen();
+        log.info("Alle Einkaufsläden wurden angefragt");
+        List<Einkaufsladen> einkaufsladen =  service.getAllEinkaufsladen();
+        log.info("Alle Einkaufsläden erfolgreich ermittelt, anzahl={}", einkaufsladen.size());
+
+        return einkaufsladen;
     }
 
-    @GetMapping(path = "{id}")
+    @GetMapping(path = "/{id}")
     Einkaufsladen getEinkaufsladen(@PathVariable final int id){
-        return service.getEinkaufsladen(id);
+        log.info("Einkaufsladen wurde angefragt, id={}", id);
+        Einkaufsladen einkaufsladen = service.getEinkaufsladen(id);
+        log.info("Einkaufsladen erfolgreich ermittelt, id={}, name={}",
+                einkaufsladen.getEinkaufsladenId(),
+                einkaufsladen.getName()
+        );
+
+        return einkaufsladen;
     }
 
     @PostMapping
     ResponseEntity<Void> insertEinkaufsladen(@RequestBody EinkaufsladenDTO einkaufsladenDTO) throws URISyntaxException {
+        log.info("Neuer Einkaufsladen soll erstellt werden, name={}", einkaufsladenDTO.name());
         final var l = service.insertEinkaufsladen(einkaufsladenDTO.toEinkaufsladen());
         final var location = new URI(ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString() + "/einkaufsladen/" + l.getEinkaufsladenId());
+        log.info("Einkaufsladen erfolgreich erstellt, id={}, name={}, location={}",
+                l.getEinkaufsladenId(),
+                l.getName(),
+                location
+        );
         return created(location).build();
     }
 }
