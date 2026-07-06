@@ -283,40 +283,6 @@ GET /einkaufsladen
 Authorization: Bearer <jwt-token>
 ```
 
-## Hinweise zur Weiterentwicklung
-
-### 1. DTOs konsequent verwenden
-
-Aktuell können Entities in manchen Controllern direkt zurückgegeben werden. Für kleine Lernprojekte funktioniert das, aber langfristig sollten API-Responses über DTOs laufen. Das verhindert Lazy-Loading-Probleme, zu große JSON-Antworten und rekursive Beziehungen.
-
-### 2. Flyway oder Liquibase einführen
-
-Für produktionsnähere Projekte sollte die Datenbank nicht dauerhaft über `ddl-auto=update` gepflegt werden. Besser ist ein Migrationstool wie Flyway oder Liquibase.
-
-### 3. Bestand robuster machen
-
-Bestandsänderungen sind konkurrenzanfällig. Wenn zwei Requests gleichzeitig ein Rezept kochen, können ohne Locking fehlerhafte Bestände entstehen. Ein `@Version`-Feld für Optimistic Locking wäre hier sinnvoll.
-
-### 4. Mengenmodell verbessern
-
-Aktuell ist `menge` bei Rezeptzutaten einfach modelliert. Langfristig wäre ein saubereres Modell sinnvoll:
-
-- numerischer Wert
-- Einheit, z. B. g, ml, Stück
-- optional Reihenfolge der Zutaten im Rezept
-
-### 5. Rollenrechte konsequent absichern
-
-Schreibende Operationen sollten konsequent nur für `ADMIN` erlaubt sein. Lesende Operationen können für eingeloggte User erlaubt bleiben.
-
-### 6. Security-Hardening
-
-- JWT-Secret nicht committen
-- Token-Laufzeit kurz halten
-- HTTPS im Deployment nutzen
-- Passwortregeln definieren
-- Admin-Erstellung kontrollieren
-- Swagger in Produktion ggf. deaktivieren
 
 ## Projektstatus
 
