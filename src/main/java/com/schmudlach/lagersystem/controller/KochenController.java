@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,19 +21,19 @@ public class KochenController {
 
 
     @GetMapping
-    List<Rezept> getAllKochbarenRezepte(){
+    List<Rezept> getAllKochbarenRezepte() {
         log.info("anfrage an alle Kochbaren Rezepte");
-        List<Rezept> rezepte =service.getAllKochbarenRezepte();
+        List<Rezept> rezepte = service.getAllKochbarenRezepte();
         log.info("Kochbare Rezepte erfolgreich ermittelt, anzahl={}", rezepte.size());
         return rezepte;
     }
 
-
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping(path = "/{rezeptId}")
-    ResponseEntity<BestandsPruefungResult> kochen(@PathVariable final int rezeptId){
+    ResponseEntity<BestandsPruefungResult> kochen(@PathVariable final int rezeptId) {
         log.info("Kochen angefragt für rezeptId={}", rezeptId);
         BestandsPruefungResult data = service.decrementVerfügbareLebensmittel(rezeptId);
-        if (data.isSuccess()){
+        if (data.isSuccess()) {
             log.info("Rezept erfolgreich gekocht für rezeptId={}", rezeptId);
             return ResponseEntity.ok(data);
         }

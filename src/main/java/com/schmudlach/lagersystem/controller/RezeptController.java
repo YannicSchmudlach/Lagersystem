@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -15,6 +16,7 @@ import java.net.URISyntaxException;
 import java.util.List;
 
 import static org.springframework.http.ResponseEntity.created;
+
 @RestController
 @RequestMapping("/rezept")
 @RequiredArgsConstructor
@@ -23,7 +25,7 @@ public class RezeptController {
     private final RezeptService service;
 
     @GetMapping
-    List<Rezept> getAllRezepte(){
+    List<Rezept> getAllRezepte() {
         log.info("Alle Rezepte wurden angefragt");
         List<Rezept> rezepte = service.getAllRezepte();
         log.info("Rezepte erfolgreich ermittelt, anzahl={}", rezepte.size());
@@ -32,7 +34,7 @@ public class RezeptController {
     }
 
     @GetMapping(path = "/{id}")
-    Rezept getRezept(@PathVariable final int id){
+    Rezept getRezept(@PathVariable final int id) {
         log.info("Rezept wurde angefragt, id={}", id);
 
         Rezept rezept = service.getRezept(id);
@@ -41,6 +43,7 @@ public class RezeptController {
         return rezept;
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     ResponseEntity<Void> createRezept(@RequestBody final RezeptDTO rezeptDTO, final HttpServletRequest request) throws URISyntaxException {
         log.info("Neues Rezept soll erstellt werden");

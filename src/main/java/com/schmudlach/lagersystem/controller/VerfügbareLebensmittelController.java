@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -31,7 +32,7 @@ public class VerfügbareLebensmittelController {
     @GetMapping
     List<VerfügbareLebensmittel> getAll() {
         log.info("Alle verfügbaren Lebensmittel wurden angefragt");
-        List<VerfügbareLebensmittel> result =  service.getAllVerfügbareLebensmittel();
+        List<VerfügbareLebensmittel> result = service.getAllVerfügbareLebensmittel();
         log.info("Verfügbare Lebensmittel erfolgreich ermittelt, anzahl={}", result.size());
 
         return result;
@@ -51,6 +52,7 @@ public class VerfügbareLebensmittelController {
         return result;
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     ResponseEntity<Void> createVerfügbareLebensmittel(@RequestBody final VerfügbareLebensmittelDTO verfügbareLebensmittelDTO, final HttpServletRequest request) throws URISyntaxException {
         log.info(
@@ -72,6 +74,7 @@ public class VerfügbareLebensmittelController {
         return created(location).build();
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping(path = "/{id}")
     ResponseEntity<Void> deleteVerfügbareLebensmittel(@PathVariable final int id) {
         log.info("Verfügbares Lebensmittel soll gelöscht werden, id={}", id);

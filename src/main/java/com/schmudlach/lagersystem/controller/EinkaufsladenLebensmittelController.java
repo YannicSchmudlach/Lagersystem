@@ -6,6 +6,7 @@ import com.schmudlach.lagersystem.service.EinkaufsladenLebensmittelService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -23,7 +24,7 @@ public class EinkaufsladenLebensmittelController {
     private final EinkaufsladenLebensmittelService service;
 
     @GetMapping()
-    List<EinkaufsladenLebensmittel> getAll(){
+    List<EinkaufsladenLebensmittel> getAll() {
         log.info("Alle Einkaufsladen-Lebensmittel-Zuordnungen wurden angefragt");
         List<EinkaufsladenLebensmittel> result = service.getAll();
         log.info("Einkaufsladen-Lebensmittel-Zuordnungen erfolgreich ermittelt, anzahl={}", result.size());
@@ -31,9 +32,9 @@ public class EinkaufsladenLebensmittelController {
     }
 
     @GetMapping(path = "/{id}")
-    EinkaufsladenLebensmittel getEinkaufsladenLebensmittel(@PathVariable final int id){
+    EinkaufsladenLebensmittel getEinkaufsladenLebensmittel(@PathVariable final int id) {
         log.info("Einkaufsladen-Lebensmittel-Zuordnung wurde angefragt, id={}", id);
-        EinkaufsladenLebensmittel result =  service.getEinkaufsladenLebensmittelById(id);
+        EinkaufsladenLebensmittel result = service.getEinkaufsladenLebensmittelById(id);
         log.info(
                 "Einkaufsladen-Lebensmittel-Zuordnung erfolgreich ermittelt, id={}, einkaufsladenId={}, lebensmittelId={}",
                 result.getEinkaufsladenLebensmittelId(),
@@ -44,6 +45,7 @@ public class EinkaufsladenLebensmittelController {
         return result;
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping()
     ResponseEntity<Void> create(@RequestBody EinkaufsladenLebensmittelDTO einkaufsladenLebensmittelDTO) throws Exception {
         log.info(
