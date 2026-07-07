@@ -13,7 +13,7 @@ import lombok.*;
 @Table(name = "lebensmittel",uniqueConstraints = @UniqueConstraint(name ="uk_lebensmittel_name",columnNames = {"name"}))
 public class Lebensmittel {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int lebensmittelID;
 
     @NotBlank

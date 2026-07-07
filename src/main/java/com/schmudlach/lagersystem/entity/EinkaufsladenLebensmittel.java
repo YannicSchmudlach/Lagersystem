@@ -22,7 +22,7 @@ public class EinkaufsladenLebensmittel {
 
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int einkaufsladenLebensmittelId;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

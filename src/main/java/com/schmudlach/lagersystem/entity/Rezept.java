@@ -15,7 +15,7 @@ import java.util.List;
 @Table(name = "rezept")
 public class Rezept {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int rezeptId;
 
     @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "rezept", cascade = CascadeType.ALL)

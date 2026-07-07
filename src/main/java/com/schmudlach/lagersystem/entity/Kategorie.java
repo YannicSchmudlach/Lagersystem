@@ -19,7 +19,7 @@ import lombok.*;
 public class Kategorie {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int kategorieId;
 
     @NotBlank

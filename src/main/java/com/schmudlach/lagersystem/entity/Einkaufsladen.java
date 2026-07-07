@@ -19,7 +19,7 @@ import lombok.*;
 public class Einkaufsladen {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int einkaufsladenId;
 
     @NotBlank

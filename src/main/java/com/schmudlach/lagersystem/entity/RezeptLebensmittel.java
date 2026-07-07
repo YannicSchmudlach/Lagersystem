@@ -18,7 +18,7 @@ import lombok.*;
                 )})
 public class RezeptLebensmittel {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int rezeptLebensmittelId;
 
     @NonNull

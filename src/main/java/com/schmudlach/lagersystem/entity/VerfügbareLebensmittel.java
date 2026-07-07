@@ -18,7 +18,7 @@ import lombok.*;
 public class VerfügbareLebensmittel {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int verfuegbareLebensmittelId;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
