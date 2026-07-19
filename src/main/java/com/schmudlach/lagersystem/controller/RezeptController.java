@@ -1,7 +1,8 @@
 package com.schmudlach.lagersystem.controller;
 
+import com.schmudlach.lagersystem.apidesign.RezeptResponseDTO;
 import com.schmudlach.lagersystem.dto.RezeptDTO;
-import com.schmudlach.lagersystem.entity.Rezept;
+import com.schmudlach.lagersystem.mapper.RezeptMapper;
 import com.schmudlach.lagersystem.service.RezeptService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
@@ -23,22 +24,22 @@ import static org.springframework.http.ResponseEntity.created;
 @Slf4j
 public class RezeptController {
     private final RezeptService service;
+    private final RezeptMapper rezeptMapper;
 
     @GetMapping
-    List<Rezept> getAllRezepte() {
+    List<RezeptResponseDTO> getAllRezepte() {
         log.info("Alle Rezepte wurden angefragt");
-        List<Rezept> rezepte = service.getAllRezepte();
+        List<RezeptResponseDTO> rezepte =  rezeptMapper.toResponseDTOs(service.getAllRezepte());
         log.info("Rezepte erfolgreich ermittelt, anzahl={}", rezepte.size());
 
         return rezepte;
     }
 
     @GetMapping(path = "/{id}")
-    Rezept getRezept(@PathVariable final int id) {
+    RezeptResponseDTO getRezept(@PathVariable final int id) {
         log.info("Rezept wurde angefragt, id={}", id);
-
-        Rezept rezept = service.getRezept(id);
-        log.info("Rezept erfolgreich ermittelt, id={}", rezept.getRezeptId());
+        RezeptResponseDTO rezept = rezeptMapper.toResponseDTO(service.getRezept(id));
+        log.info("Rezept erfolgreich ermittelt, id={}", rezept.rezeptId());
 
         return rezept;
     }

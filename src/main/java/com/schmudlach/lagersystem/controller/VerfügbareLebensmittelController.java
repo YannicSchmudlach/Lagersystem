@@ -1,13 +1,10 @@
 package com.schmudlach.lagersystem.controller;
 
-import com.schmudlach.lagersystem.dto.RezeptDTO;
+import com.schmudlach.lagersystem.apidesign.VerfügbareLebensmittelResponseDTO;
 import com.schmudlach.lagersystem.dto.VerfügbareLebensmittelDTO;
-import com.schmudlach.lagersystem.entity.Kategorie;
-import com.schmudlach.lagersystem.entity.VerfügbareLebensmittel;
-import com.schmudlach.lagersystem.repository.VerfügbareLebensmittelRepository;
+import com.schmudlach.lagersystem.mapper.VerfügbareLebensmittelMapper;
 import com.schmudlach.lagersystem.service.VerfügbareLebensmittelService;
 import jakarta.servlet.http.HttpServletRequest;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -27,27 +24,27 @@ import static org.springframework.http.ResponseEntity.created;
 @RequestMapping("/verfügbarelebensmittel")
 public class VerfügbareLebensmittelController {
     private final VerfügbareLebensmittelService service;
-
+    private final VerfügbareLebensmittelMapper verfügbareLebensmittelMapper;
 
     @GetMapping
-    List<VerfügbareLebensmittel> getAll() {
+    List<VerfügbareLebensmittelResponseDTO> getAll() {
         log.info("Alle verfügbaren Lebensmittel wurden angefragt");
-        List<VerfügbareLebensmittel> result = service.getAllVerfügbareLebensmittel();
+        List<VerfügbareLebensmittelResponseDTO> result = verfügbareLebensmittelMapper.toResponseDTOs(service.getAllVerfügbareLebensmittel());
         log.info("Verfügbare Lebensmittel erfolgreich ermittelt, anzahl={}", result.size());
 
         return result;
     }
 
     @GetMapping(path = "/{id}")
-    VerfügbareLebensmittel getVerfügbareLebensmittel(@PathVariable final int id) {
+    VerfügbareLebensmittelResponseDTO getVerfügbareLebensmittel(@PathVariable final int id) {
         log.info("Verfügbares Lebensmittel wurde angefragt, id={}", id);
-        VerfügbareLebensmittel result = service.getVerfügbareLebensmittelById(id);
+        VerfügbareLebensmittelResponseDTO result = verfügbareLebensmittelMapper.toResponseDTO(service.getVerfügbareLebensmittelById(id));
         log.info(
                 "Verfügbares Lebensmittel erfolgreich ermittelt, id={}, lebensmittelId={}, anzahl={}, threshold={}",
-                result.getVerfuegbareLebensmittelId(),
-                result.getLebensmittel().getLebensmittelID(),
-                result.getAnzahl(),
-                result.getThreshold()
+                result.verfuegbareLebensmittelId(),
+                result.lebensmittel().lebensmittelID(),
+                result.anzahl(),
+                result.threshold()
         );
         return result;
     }

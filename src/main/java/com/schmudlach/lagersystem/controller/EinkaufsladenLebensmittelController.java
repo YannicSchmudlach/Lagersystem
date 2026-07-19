@@ -1,7 +1,8 @@
 package com.schmudlach.lagersystem.controller;
 
+import com.schmudlach.lagersystem.apidesign.EinkaufsladenLebensmittelResponseDTO;
 import com.schmudlach.lagersystem.dto.EinkaufsladenLebensmittelDTO;
-import com.schmudlach.lagersystem.entity.EinkaufsladenLebensmittel;
+import com.schmudlach.lagersystem.mapper.EinkaufsladenLebensmittelMapper;
 import com.schmudlach.lagersystem.service.EinkaufsladenLebensmittelService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -22,24 +23,26 @@ import static org.springframework.http.ResponseEntity.created;
 public class EinkaufsladenLebensmittelController {
 
     private final EinkaufsladenLebensmittelService service;
+    private final EinkaufsladenLebensmittelMapper einkaufsladenLebensmittelMapper;
 
     @GetMapping()
-    List<EinkaufsladenLebensmittel> getAll() {
+    List<EinkaufsladenLebensmittelResponseDTO> getAll() {
         log.info("Alle Einkaufsladen-Lebensmittel-Zuordnungen wurden angefragt");
-        List<EinkaufsladenLebensmittel> result = service.getAll();
+
+        List<EinkaufsladenLebensmittelResponseDTO> result =einkaufsladenLebensmittelMapper.toResponseDTOs(service.getAll()) ;
         log.info("Einkaufsladen-Lebensmittel-Zuordnungen erfolgreich ermittelt, anzahl={}", result.size());
         return result;
     }
 
     @GetMapping(path = "/{id}")
-    EinkaufsladenLebensmittel getEinkaufsladenLebensmittel(@PathVariable final int id) {
+    EinkaufsladenLebensmittelResponseDTO getEinkaufsladenLebensmittel(@PathVariable final int id) {
         log.info("Einkaufsladen-Lebensmittel-Zuordnung wurde angefragt, id={}", id);
-        EinkaufsladenLebensmittel result = service.getEinkaufsladenLebensmittelById(id);
+        EinkaufsladenLebensmittelResponseDTO result = einkaufsladenLebensmittelMapper.toResponseDTO(service.getEinkaufsladenLebensmittelById(id));
         log.info(
                 "Einkaufsladen-Lebensmittel-Zuordnung erfolgreich ermittelt, id={}, einkaufsladenId={}, lebensmittelId={}",
-                result.getEinkaufsladenLebensmittelId(),
-                result.getEinkaufsladen().getEinkaufsladenId(),
-                result.getLebensmittel().getLebensmittelID()
+                result.einkaufsladenLebensmittelId(),
+                result.einkaufsladen().einkaufsladenId(),
+                result.lebensmittel().lebensmittelID()
         );
 
         return result;

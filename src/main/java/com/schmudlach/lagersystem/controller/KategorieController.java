@@ -1,7 +1,8 @@
 package com.schmudlach.lagersystem.controller;
 
+import com.schmudlach.lagersystem.apidesign.KategorieResponseDTO;
 import com.schmudlach.lagersystem.dto.KategorieDTO;
-import com.schmudlach.lagersystem.entity.Kategorie;
+import com.schmudlach.lagersystem.mapper.KategorieMapper;
 import com.schmudlach.lagersystem.service.KategorieService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
@@ -23,22 +24,23 @@ import static org.springframework.http.ResponseEntity.created;
 @Slf4j
 public class KategorieController {
     private final KategorieService service;
+    private final KategorieMapper kategorieMapper;
 
     @GetMapping()
-    List<Kategorie> getAll() {
+    List<KategorieResponseDTO> getAll() {
         log.info("Alle Kategorien wurden angefragt");
-        List<Kategorie> result = service.getAllKategories();
+        List<KategorieResponseDTO> result = kategorieMapper.toResponseDTOs(service.getAllKategories());
         log.info("Kategorien erfolgreich ermittelt, anzahl={}", result.size());
         return result;
     }
 
     @GetMapping(path = "/{id}")
-    Kategorie getKategorie(@PathVariable final int id) {
+    KategorieResponseDTO getKategorie(@PathVariable final int id) {
         log.info("Kategorie wurde angefragt, id={}", id);
-        Kategorie kategorie = service.getKategorieById(id);
+        KategorieResponseDTO kategorie = kategorieMapper.toResponseDTO(service.getKategorieById(id));
         log.info("Kategorie erfolgreich ermittelt, id={}, name={}",
-                kategorie.getKategorieId(),
-                kategorie.getName()
+                kategorie.kategorieId(),
+                kategorie.name()
         );
 
         return kategorie;

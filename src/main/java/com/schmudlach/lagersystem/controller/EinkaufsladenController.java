@@ -1,8 +1,9 @@
 package com.schmudlach.lagersystem.controller;
 
 
+import com.schmudlach.lagersystem.apidesign.EinkaufsladenResponseDTO;
 import com.schmudlach.lagersystem.dto.EinkaufsladenDTO;
-import com.schmudlach.lagersystem.entity.Einkaufsladen;
+import com.schmudlach.lagersystem.mapper.EinkaufsladenMapper;
 import com.schmudlach.lagersystem.service.EinkaufsladenService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,24 +25,24 @@ import static org.springframework.http.ResponseEntity.created;
 public class EinkaufsladenController {
 
     private final EinkaufsladenService service;
-
+    private final EinkaufsladenMapper einkaufsladenMapper;
 
     @GetMapping
-    List<Einkaufsladen> getAllEinkaufsladen(){
+    List<EinkaufsladenResponseDTO> getAllEinkaufsladen() {
         log.info("Alle Einkaufsläden wurden angefragt");
-        List<Einkaufsladen> einkaufsladen =  service.getAllEinkaufsladen();
+        List<EinkaufsladenResponseDTO> einkaufsladen = einkaufsladenMapper.toResponseDTOs(service.getAllEinkaufsladen());
         log.info("Alle Einkaufsläden erfolgreich ermittelt, anzahl={}", einkaufsladen.size());
 
         return einkaufsladen;
     }
 
     @GetMapping(path = "/{id}")
-    Einkaufsladen getEinkaufsladen(@PathVariable final int id){
+    EinkaufsladenResponseDTO getEinkaufsladen(@PathVariable final int id) {
         log.info("Einkaufsladen wurde angefragt, id={}", id);
-        Einkaufsladen einkaufsladen = service.getEinkaufsladen(id);
+        EinkaufsladenResponseDTO einkaufsladen = einkaufsladenMapper.toResponseDTO(service.getEinkaufsladen(id));
         log.info("Einkaufsladen erfolgreich ermittelt, id={}, name={}",
-                einkaufsladen.getEinkaufsladenId(),
-                einkaufsladen.getName()
+                einkaufsladen.einkaufsladenId(),
+                einkaufsladen.name()
         );
 
         return einkaufsladen;

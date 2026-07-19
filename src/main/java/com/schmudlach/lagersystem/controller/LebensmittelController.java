@@ -1,7 +1,8 @@
 package com.schmudlach.lagersystem.controller;
 
+import com.schmudlach.lagersystem.apidesign.LebensmittelResponseDTO;
 import com.schmudlach.lagersystem.dto.LebensmittelDTO;
-import com.schmudlach.lagersystem.entity.Lebensmittel;
+import com.schmudlach.lagersystem.mapper.LebensmittelMapper;
 import com.schmudlach.lagersystem.service.LebensmittelService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
@@ -24,22 +25,24 @@ import static org.springframework.http.ResponseEntity.created;
 public class LebensmittelController {
 
     private final LebensmittelService service;
+    private final LebensmittelMapper lebensmittelMapper;
 
     @GetMapping(path = "/{id}")
-    Lebensmittel getLebensmittel(@PathVariable final int id) {
+    LebensmittelResponseDTO getLebensmittel(@PathVariable final int id) {
         log.info("Lebensmittel wurde angefragt, id={}", id);
-        Lebensmittel lebensmittel = service.getLebensmittel(id);
+
+        LebensmittelResponseDTO lebensmittel = lebensmittelMapper.toResponseDTO(service.getLebensmittel(id));
         log.info("Lebensmittel erfolgreich ermittelt, id={}, name={}",
-                lebensmittel.getLebensmittelID(),
-                lebensmittel.getName()
+                lebensmittel.lebensmittelID(),
+                lebensmittel.name()
         );
         return lebensmittel;
     }
 
     @GetMapping
-    List<Lebensmittel> getAllLebensmittel() {
+    List<LebensmittelResponseDTO> getAllLebensmittel() {
         log.info("Alle Lebensmittel wurden angefragt");
-        List<Lebensmittel> lebensmittel = service.getAllLebensmittel();
+        List<LebensmittelResponseDTO> lebensmittel = lebensmittelMapper.toResponseDTOs(service.getAllLebensmittel());
         log.info("Lebensmittel erfolgreich ermittelt, anzahl={}", lebensmittel.size());
 
         return lebensmittel;
