@@ -1,0 +1,76 @@
+# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
+
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: Lagersystem CI
+
+on:
+  push:
+    branches: [ "main" ]
+  # Allow the workflow to be started manually
+  workflow_dispatch:
+  
+permissions:
+  contents: read
+jobs:
+  build-and-test:
+
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_DB: lagersystem
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+
+        ports:
+          - 5432:5432
+
+        # Wait until PostgreSQL is ready to accept connections.
+        options: >-
+          --health-cmd="pg_isready -U postgres -d lagersystem"
+          --health-interval=5s
+          --health-timeout=5s
+          --health-retries=10
+
+
+    env:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/lagersystem
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+
+
+      SECURITY_JWT_SECRET: github-actions-test-secret-with-at-least-32-characters
+      SECURITY_JWT_EXPIRATION_MINUTES: 60
+
+    steps:
+      # Download the repository source code 
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      # Install and configure Java 17.
+      - name: Set up Java 17
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "17"
+
+          cache: maven
+
+      # Add execution permission to the Maven Wrapper on Linux.
+      - name: Make Maven Wrapper executable
+        run: chmod +x mvnw
+
+      # Compile the application, run the tests, and create the JAR file.
+      - name: Build and test project
+        run: ./mvnw --batch-mode clean verify
+
+      # Check whether the Docker image can be built successfully.
+      - name: Build Docker image
+        run: docker build -t lagersystem:test .
